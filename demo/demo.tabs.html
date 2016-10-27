@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>口碑 Tabe 切换 DEMO</title>
+	<link rel="stylesheet" href="../koubei.min.css">
+	<script src="../jquery.min.js"></script>
+	<script src="../koubei.min.js"></script>
+</head>
+<body>
+	<div class="kb-page-main">
+		<h2 class="kb-head-h2">
+			Tabe 切换 DEMO
+			<span>支持切换前/后/点击切换时回调 | 查看 console.log 获取回调信息</span>
+		</h2>
+		<div class="kb-tabs" data-active="0">
+			<div class="kb-tabs-group">
+				<div class="kb-tabs-ul kb-clearfix">
+					<li class="kb-tabs-li"><h3>页面一</h3></li>
+					<li class="kb-tabs-li"><h3>页面二</h3></li>
+					<li class="kb-tabs-li"><h3>页面三</h3></li>
+				</div>
+			</div>
+		</div>
+		<div class="kb-tabs-content kb-clearfix">
+			<div class="kb-tabs-page" style="text-align: center;height: 200px;background-color:#eee;color:#000">
+				当前页面 1 内容
+			</div>
+			<div class="kb-tabs-page" style="text-align: center;height: 200px;background-color: #eee;color:#000">
+				当前页面 2 内容
+			</div>
+			<div class="kb-tabs-page" style="text-align: center;height: 200px;background-color: #eee;color:#000">
+				当前页面 3 内容
+			</div>
+		</div>
+	</div>
+<script>
+$(document).ready(function() {
+	var Cli = function(el,index){
+		console.log(el);
+		index = index+1;
+		console.log('你点击了'+ index +'第个');
+	}
+	var kb_tabs = new KouBeiTabs($('.kb-tabs'),{
+		'callback':{
+			'kbcb_clicktab' : Cli
+		}
+	});
+	kb_tabs.addEle($('.kb-tabs-content'),$('.kb-tabs-page'));
+	kb_tabs.Start();
+});
+</script>
+</body>
+</html>

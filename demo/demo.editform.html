@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>口碑 EditForm 元素 DEMO</title>
+	<link rel="stylesheet" href="../koubei.min.css">
+	<script src="../jquery.min.js"></script>
+	<script src="../koubei.min.js"></script>
+</head>
+<body>
+	<div class="kb-page-main">
+		<h2 class="kb-head-h2">
+			EditForm 元素 DEMO
+		</h2>
+		<div class="kb-editform">
+			<div class="kb-msg-bar"><h3>主要信息</h3></div>
+			<div class="kb-row">
+				<div class="kb-editform-input kb-notnull">
+					<label class="kb-lable kb-col-8">商品名称</label>
+					<input class="kb-col-16" type="text" placeholder="商品的名称">
+				</div>
+			</div>
+			<div class="kb-row kb-flex-right">
+				<div class="kb-editform-input kb-notnull kb-col-9">
+					<label class="kb-lable kb-col-8">现价</label>
+					<input class="kb-col-16" type="text" placeholder="商品的现价">
+				</div>
+				<div class="kb-editform-input kb-col-10">
+					<label class="kb-lable kb-col-8">原价</label>
+					<input class="kb-col-16" type="text" placeholder="商品的原价">
+				</div>
+			</div>
+			<div class="kb-row">
+				<div class="kb-editform-upimage kb-notnull" data-kbmax="5">
+					<label class="kb-lable kb-col-8">商品首图</label>
+					<div class="kb-upimageform kb-col-16">
+						<div class="kb-addimage"></div>
+						<div class="kb-demoimage">
+							<a target="_blank" href="https://zos.alipayobjects.com/rmsportal/VZyAFILMgzFYYrV.jpg">
+								<img src="https://zos.alipayobjects.com/rmsportal/VZyAFILMgzFYYrV.jpg" alt="">
+								<span>客户端示例</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="kb-row kb-notnull">
+				<label class="kb-lable kb-col-8">适用门店</label>
+				<div class="kb-col-16">
+					<a class="kb-editlink" href="javascript:;">选择门店</a>
+				</div>
+			</div>
+			<div class="kb-msg-bar"><h3>商品信息</h3></div>
+			<div class="kb-row">
+				<div class="kb-editform-textarea">
+					<label class="kb-lable kb-col-8">商品描述</label>
+					<div class="kb-col-16">
+						<textarea placeholder="针对商品的描述内容"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="kb-row">
+				<div class="kb-editform-inputgroup custom-class-inputgroup1" data-kbmax="5" data-kbjson='[{"input": "使用时段1","textarea": "测试内容1"},{"input": "使用时段2","textarea": "测试内容2"},{"input": "使用时段3","textarea": "测试内容3"}]'>
+					<label class="kb-lable kb-col-8">详细内容</label>
+					<div class="kb-inputgroup kb-col-16">
+						<div class="kb-inputitem kb-col-20">
+							<input type="text" class="kb-col-24" placeholder="针对商品的描述标题">
+							<div class="kb-col-24">
+								<textarea placeholder="针对商品的描述内容"></textarea>
+							</div>
+						</div>
+						<div class="kb-inputbtn kb-col-4"></div>
+					</div>
+				</div>
+			</div>
+			<div class="kb-row">
+				<div class="kb-editform-number">
+					<label class="kb-lable kb-col-8">购买须知</label>
+					<div class="kb-number-input kb-col-4">
+						<input type="number" value="365" class="kb-col-24" placeholder="商品购买前购买须知">
+					</div>
+				</div>
+			</div>
+			<div class="kb-row">
+				<div class="kb-editform-inputgroup custom-class-inputgroup2" data-kbmax="5">
+					<label class="kb-lable kb-col-8">详细内容</label>
+					<div class="kb-inputgroup kb-col-16">
+						<div class="kb-inputitem kb-col-20">
+							<input type="text" class="kb-col-24" placeholder="针对商品的描述标题">
+							<div class="kb-col-24">
+								<textarea placeholder="针对商品的描述内容"></textarea>
+							</div>
+						</div>
+						<div class="kb-inputbtn kb-col-4"></div>
+					</div>
+				</div>
+			</div>
+			<div class="kb-hr"></div>
+			<div class="kb-row kb-flex-right">
+				<div class="kb-editform-select kb-col-9 custom-class-searchselect" data-active="0">
+					<label class="kb-lable kb-col-8">商品数量</label>
+					<div class="kb-rel kb-col-16">
+						<div class="kb-select"></div>
+						<div class="kb-select-scroll">
+							<div class="kb-overflow-y">
+								<ul>
+									<li data-title="无限量">无限量</li>
+									<li data-title="自定义">自定义数量</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="kb-editform-number kb-col-10 custom-class-ProdcutNum">
+					<label class="kb-lable kb-col-8">商品总数量</label>
+					<div class="kb-number-input kb-col-16">
+						<div class="kb-number-handler">
+							<div class="kb-number kb-number-up"><i class="kb-icon-arrow"></i></div>
+							<div class="kb-number kb-number-down"><i class="kb-icon-arrow-down"></i></div>
+						</div>
+						<input type="number" class="kb-col-24" placeholder="商品总数量">
+					</div>
+				</div>
+			</div>
+			<div class="kb-row kb-flex-right">
+				<div class="kb-editform-select kb-col-9 custom-class-select" data-active="0">
+					<label class="kb-lable kb-col-8">售卖时间</label>
+					<div class="kb-rel kb-col-16">
+						<div class="kb-select"></div>
+						<div class="kb-select-scroll">
+							<div class="kb-overflow-y">
+								<ul>
+									<li data-title="立即上架">立即上架</li>
+									<li data-title="自定义">自定义时间</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="kb-editform-timepicker kb-col-10 custom-class-Time">
+					<label class="kb-lable kb-col-8">选择上架时间</label>
+					<input type="text" id="custom-class-times" class="kb-col-16">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="kb-shopform kb-hide-placeholder">
+		<div class="kb-shopform-tablecall">
+			<div class="kb-shopform-content">
+				<div class="kb-shopform-header">
+					<h2 class="kb-head-title">选择门店</h2>
+					<div class="kb-head-close">
+						<i class="kb-icon-close"></i>
+					</div>
+				</div>
+				<div class="kb-shopform-body kb-row kb-flex-center">
+					<div class="kb-body kb-body-left kb-min-col-24">
+						<div class="kb-linkselect">
+							<ul>
+								<li>
+									<h2 class="kb-select kb-select-all"><span class="kb-link-icon"></span>未分类</h2>
+									<ul>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店1</h2></li>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店2</h2></li>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店2</h2></li>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店2</h2></li>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店2</h2></li>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店2</h2></li>
+									</ul>
+								</li>
+								<li>
+									<h2 class="kb-select kb-select-all"><span class="kb-link-icon"></span>未分类2</h2>
+									<ul>
+										<li><h2 class="kb-select"><span class="kb-link-icon"></span>门店1</h2></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="kb-min-col-2"></div>
+					<div class="kb-body kb-body-right kb-min-col-24">
+						<div class="kb-passivityselect"></div>
+					</div>
+				</div>
+				<div class="kb-shopform-footer">
+					<a class="kb-btn kb-btn-primary" href="#">确 定</a>
+					<a class="kb-btn" href="#">关 闭</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+	var SelectProductNum = function(el){
+		if($(el).data('title') == '自定义'){
+			$('.custom-class-ProdcutNum').removeClass('kb-hide-placeholder');
+		}else{
+			$('.custom-class-ProdcutNum').addClass('kb-hide-placeholder');
+		}
+	}
+	var SelectProductTime = function(el){
+		if($(el).data('title') == '自定义'){
+			$('.custom-class-Time').removeClass('kb-hide-placeholder');
+		}else{
+			$('.custom-class-Time').addClass('kb-hide-placeholder');
+		}
+	}
+	var EditForm = new KouBeiEditForm($('.kb-editform'));
+	EditForm.AddUploadFile($('.kb-editform-upimage'));
+	EditForm.AddSelect($('.custom-class-searchselect'),{
+		'callback': {
+			'kbcb_select' : SelectProductNum,
+			'kbcb_clear' : SelectProductNum
+		}
+	});
+	EditForm.AddSelect($('.custom-class-select'),{
+		'callback':{
+			'kbcb_select' : SelectProductTime,
+			'kbcb_clear' : SelectProductTime
+		}
+	});
+	EditForm.AddInputGroup($('.custom-class-inputgroup1'));
+	EditForm.AddInputGroup($('.custom-class-inputgroup2'));
+	EditForm.AddLinkSelect($('.kb-linkselect'),$('.kb-passivityselect'));
+
+	var picker = new Pikaday({
+        field: document.getElementById('custom-class-times'),
+        format: 'YYYY-MM-DD'
+    });
+</script>
+</body>
+</html>

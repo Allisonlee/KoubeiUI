@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>口碑 Talbe DEMO</title>
+	<link rel="stylesheet" href="../koubei.min.css">
+	<script src="../jquery.min.js"></script>
+	<script src="../koubei.min.js"></script>
+</head>
+<body>
+	<div class="kb-page-main">
+		<h2 class="kb-head-h2">
+			Talbe DEMO
+		</h2>
+		<div class="kb-table">
+			<table>
+				<thead>
+					<tr>
+						<th class="kb-table-select-column">
+							<input type="checkbox" class="kb-check-input kb-check-all" checked>
+						</th>
+						<th>门店 ID</th>
+						<th>门店名称</th>
+						<th>图片组</th>
+						<th>商户 PDI</th>
+						<th>商户名称</th>
+						<th>地址/联系方式</th>
+						<th>门店<br>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="kb-table-select-column">
+							<input type="checkbox" class="kb-check-input kb-check-donttouch">
+						</td>
+						<td>2000000000000000000000000007</td>
+						<td>公司名称</td>
+						<td>
+							<div class="kb-table-imagegroup">
+								
+							</div>
+						</td>
+						<td>200000000007</td>
+						<td>商户的名称</td>
+						<td>浙江省-温州市-鹿城区</td>
+						<td>营业</td>
+						<td>
+							<ul class="kb-table-nav">
+								<li><a href="javascript:;">查看</a></li>
+								<li><a href="javascript:;">更多</a></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="kb-table-select-column">
+							<input type="checkbox" class="kb-check-input">
+						</td>
+						<td>2000000000000000000000000007</td>
+						<td>公司名称</td>
+						<td class="tb-notp">
+							<div class="kb-table-imagegroup">
+								<img data-src="http://imgsrc.baidu.com/forum/pic/item/242dd42a2834349bd385df34c9ea15ce37d3be84.jpg" class="kb-imageshow" src="http://imgsrc.baidu.com/forum/pic/item/242dd42a2834349bd385df34c9ea15ce37d3be84.jpg" alt="商品首图">
+							</div>
+						</td>
+						<td>200000000007</td>
+						<td>商户的名称</td>
+						<td>浙江省-温州市-鹿城区</td>
+						<td>营业</td>
+						<td>
+							<ul class="kb-table-nav">
+								<li><a href="javascript:;">查看</a></li>
+								<li><a href="javascript:;">更多</a>
+									<ul>
+										<li><a href="javascript:;">编辑</a></li>
+										<li><a href="javascript:;">上架</a></li>
+										<li><a href="javascript:;">其他</a></li>
+									</ul>
+								</li>
+								<li><a href="javascript:;">删除</a></li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="kb-pagination">
+				<ul>
+					<span>共 1923 条</span>
+					<li class="kb-pagination-prev kb-pagination-item kb-pagination-disabled"><a href="#"><i class="kb-icon-left"></i></a></li>
+					<li class="kb-pagination-item kb-active">1</li>
+					<li class="kb-pagination-more"><i class="kb-icon-more"></i></li>
+					<li class="kb-pagination-item"><a href="#">3</a></li>
+					<li class="kb-pagination-item"><a href="#">4</a></li>
+					<li class="kb-pagination-item"><a href="#">5</a></li>
+					<li class="kb-pagination-item"><a href="#">6</a></li>
+					<li class="kb-pagination-more"><i class="kb-icon-more"></i></li>
+					<li class="kb-pagination-item"><a href="#">288</a></li>
+					<li class="kb-pagination-next kb-pagination-item"><a href="#"><i class="kb-icon-right"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<script>
+$(document).ready(function() {
+	var Table = new KoubeiTable($('.kb-table'));
+	new KouBeiImageShow($('.kb-table'));
+});
+</script>
+</body>
+</html>

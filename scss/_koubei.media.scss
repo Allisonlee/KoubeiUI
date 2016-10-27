@@ -1,0 +1,227 @@
+// 口碑主色调
+$kb_color_main:#57c5f7;
+$kb_color_less:#f60;
+$kb_color_error:#f90;
+$kb_color_warning:#f50;
+/*
+	常用 CLASS
+ */
+.kb-hide-of{
+	overflow: hidden
+}
+.kb-clearfix{
+	&:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+.kb-hide{
+	display: none!important;
+}
+.kb-rel{
+	position: relative;
+}
+.kb-abs{
+	position: absolute;
+}
+.kb-right{
+	float: right!important;
+}
+@mixin kb-tabs-anime(){
+	-webkit-transform: scaleX(1);
+	-ms-transform: scaleX(1);
+	transform: scaleX(1);
+	-webkit-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+@mixin kb-tabs-anime-back(){
+	-webkit-transition: right .3s cubic-bezier(.645, .045, .355, 1) .09s, left .3s cubic-bezier(.645, .045, .355, 1);
+	transition: right .3s cubic-bezier(.645, .045, .355, 1) .09s, left .3s cubic-bezier(.645, .045, .355, 1);
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+@mixin kb-tabs-anime-forward(){
+	-webkit-transition: right .3s cubic-bezier(.645, .045, .355, 1), left .3s cubic-bezier(.645, .045, .355, 1) .09s;
+	transition: right .3s cubic-bezier(.645, .045, .355, 1), left .3s cubic-bezier(.645, .045, .355, 1) .09s;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+@mixin kb-dontmove(){
+	moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* 口碑动画 */
+@mixin kb-transition($el:all){
+	-moz-transition-property: $el;
+	-webkit-transition-property: $el;
+	transition-property: $el;
+	-moz-transition-duration: .3s;
+	-webkit-transition-duration: .3s;
+	transition-duration: .3s;
+	-moz-transition-timing-function:cubic-bezier(.645, .045, .355, 1);
+	-webkit-transition-timing-function:cubic-bezier(.645, .045, .355, 1);
+	transition-timing-function:cubic-bezier(.645, .045, .355, 1);
+}
+@-webkit-keyframes kb-MoveLeftIn {
+	0% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(-100%);
+	            transform: translateX(-100%);
+	    opacity: 0;
+	}
+	100% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	    opacity: 1;
+	}
+}
+@keyframes kb-MoveLeftIn {
+	0% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(-100%);
+	            transform: translateX(-100%);
+	    opacity: 0;
+	}
+	100% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	    opacity: 1;
+	}
+}
+@-webkit-keyframes kb-MoveLeftOut {
+	0% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	    opacity: 1;
+	}
+	100% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(-100%);
+	            transform: translateX(-100%);
+	    opacity: 0;
+	}
+}
+@keyframes kb-MoveLeftOut {
+	0% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	    opacity: 1;
+	}
+	100% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(-100%);
+	            transform: translateX(-100%);
+	    opacity: 0;
+	}
+}
+@-webkit-keyframes kb-MoveRightIn {
+	0% {
+	    opacity: 0;
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(100%);
+	            transform: translateX(100%);
+	}
+	100% {
+	    opacity: 1;
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	}
+}
+@keyframes kb-MoveRightIn {
+	0% {
+	    opacity: 0;
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(100%);
+	            transform: translateX(100%);
+	}
+	100% {
+	    opacity: 1;
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	}
+}
+@-webkit-keyframes kb-MoveRightOut {
+	0% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	    opacity: 1;
+	}
+	100% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(100%);
+	            transform: translateX(100%);
+	    opacity: 0;
+	}
+}
+@keyframes kb-MoveRightOut {
+	0% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(0%);
+	            transform: translateX(0%);
+	    opacity: 1;
+	}
+	100% {
+	    -webkit-transform-origin: 0 0;
+	            transform-origin: 0 0;
+	    -webkit-transform: translateX(100%);
+	            transform: translateX(100%);
+	    opacity: 0;
+	}
+}
+[class^="kb-overflow-"], [class*=" kb-overflow-"]{
+	max-height: 200px;
+	overflow: hidden;
+}
+.kb-overflow-y{
+	overflow-y: auto;
+}
+.kb-overflow-x{
+	overflow-x: auto;
+}
+/* CSS Flex 相关 类 */
+.kb-flex-block{
+	-webkit-box-flex: 0 0 auto;      
+	-moz-box-flex: 0 0 auto;         
+	-ms-flex: 0 0 auto; 
+	flex: 0 0 auto;
+}
+.kb-flex-auto-100{
+	-webkit-box-flex: 0 1 100%;      
+	-moz-box-flex: 0 1 100%;         
+	-ms-flex: 0 1 100%; 
+	flex: 0 1 100%;
+}
+@mixin kb_css_flex(){
+	-webkit-display: flex;
+	display: -webkit-flex;
+	display: flex;
+}

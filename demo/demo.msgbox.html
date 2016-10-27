@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>口碑 MsgBox 元素 DEMO</title>
+	<link rel="stylesheet" href="../koubei.min.css">
+	<script src="../jquery.min.js"></script>
+	<script src="../koubei.min.js"></script>
+</head>
+<body>
+	<div class="kb-page-main">
+		<h2 class="kb-head-h2">
+			MsgBox 元素 DEMO
+		</h2>
+		<a href="javascript:;" class="default kb-btn">弹出普通消息框</a>
+		<a href="javascript:;" class="dengdai kb-btn">等待提示框</a>
+	</div>
+<script>
+	$('a.default').on('click', '', function(event) {
+		new KoubeiMsgBox({
+			'btn' : 2,
+			'type' : 'question',
+			'content': {
+				'title' : '二次确认',
+				'subtitle' : '确定离开当前编辑嘛？当前并不保存草稿'
+			},
+			'callback':{
+				'yes': '', // 回调
+				'no' : '',
+			}
+		});
+	});
+
+	$('a.dengdai').on('click', '', function(event) {
+		new KoubeiMsgBox({
+			'type' : 'loading',
+			'content': {
+				'title' : '请稍等',
+				'subtitle' : '正在为你上架这款商品'
+			}
+		});
+	});
+</script>
+</body>
+</html>

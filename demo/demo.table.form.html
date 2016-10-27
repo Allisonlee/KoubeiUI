@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>口碑 Talbe 元素 DEMO</title>
+	<link rel="stylesheet" href="../koubei.min.css">
+	<script src="../jquery.min.js"></script>
+	<script src="../koubei.min.js"></script>
+</head>
+<body>
+	<div class="kb-page-main">
+		<h2 class="kb-head-h2">
+			Talbe 元素 DEMO
+		</h2>
+		<div class="kb-table-form">
+			<div class="kb-row">
+				<div class="kb-item-input kb-col-8 custom-class-input">
+					<label for="user_id" class="kb-col-min-6 kb-flex-block kb-label">常规文本框：</label>
+					<div class="kb-flex-auto-100">
+						<input id="user_id" type="text" class="kb-input" value="">
+					</div>
+				</div>
+				<div class="kb-item-select kb-col-8 custom-class-select" data-active="5">
+					<label class="kb-col-min-6 kb-flex-block kb-label">常规下拉框：</label>
+					<div class="kb-rel kb-flex-auto-100">
+						<div class="kb-select"></div>
+						<div class="kb-select-scroll">
+							<div class="kb-overflow-y">
+								<ul>
+									<li data-title="保时捷">保时捷</li>
+									<li data-title="宝马">宝马</li>
+									<li data-title="劳斯莱斯">劳斯莱斯</li>
+									<li data-title="奔驰">奔驰<span>自定义字段</span></li>
+									<li data-title="奇瑞QQ">奇瑞QQ</li>
+									<li data-title="桑塔纳">桑塔纳</li>
+									<li data-title="别克">别克</li>
+									<li data-title="雷诺">雷诺</li>
+									<li data-title="大众">大众</li>
+									<li data-title="众泰">众泰</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="kb-item-select kb-col-8 custom-class-searchselect">
+					<label class="kb-col-min-6 kb-flex-block kb-label">可搜索下拉框：</label>
+					<div class="kb-rel kb-flex-auto-100">
+						<div class="kb-select"></div>
+						<div class="kb-select-scroll">
+							<div class="kb-overflow-y">
+								<ul>
+									<li data-title="保时捷">保时捷</li>
+									<li data-title="宝马">宝马</li>
+									<li data-title="劳斯莱斯">劳斯莱斯</li>
+									<li data-title="奔驰">奔驰</li>
+									<li data-title="奇瑞QQ">奇瑞QQ</li>
+									<li data-title="桑塔纳">桑塔纳</li>
+									<li data-title="别克">别克</li>
+									<li data-title="雷诺">雷诺</li>
+									<li data-title="大众">大众</li>
+									<li data-title="众泰">众泰</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="kb-row kb-flex-right">
+				<a class="kb-btn kb-btn-primary" href="javascript:;" onclick="console.log(TableForm.GetForm());">获取 Form 内容</a>
+				<a class="kb-btn" href="javascript:;" onclick="TableForm.Reset();">清空/重置选择</a>
+				<a class="kb-btn" href="javascript:;" onclick="TableForm.Reset($('.custom-class-select'));">只清空/重置常规下拉框</a>
+			</div>
+		</div>
+	</div>
+<script>
+	var TableForm = new KouBeiTableForm($('.kb-table-form'));
+	TableForm.AddInput($('.custom-class-input'));
+	TableForm.AddSelect($('.custom-class-select'));
+	TableForm.AddSelect($('.custom-class-searchselect'),{
+		'search':true
+	});
+</script>
+</body>
+</html>
