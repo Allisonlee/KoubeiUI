@@ -42,6 +42,9 @@
 			if(ele.options.type == 'input'){
 				this._ResetInput(ele);
 			}else if(ele.options.type == 'select'){
+				// 需要做一个清空 active 的步骤
+				var select = $(this.el).find(ele);
+				$(select).data('active',$(select).data('default-active'));
 				this._ResetSelect(ele);
 			}
 		},
@@ -89,25 +92,6 @@
 			var form = this;
 			var select = $(this.el).find(ele);
 			$(select).off();
-			$(document).on('click', function(event) {
-				if($(select).hasClass('kb-openselect')){
-					// 关闭所有已打开的窗口
-					$(select).removeClass('kb-openselect')
-					$(form.el).find('.kb-item-select').each(function(index, el) {
-						if($(this).hasClass('kb-openselect')){
-							$(this).find('.kb-icon-arrow-down').css({
-								'opacity': 0,
-								'visibility': 'hidden'
-							});
-							$(this).find('.kb-icon-min-close').css({
-								'opacity': 1,
-								'visibility': 'visible'
-							});
-							$(this).removeClass('kb-openselect');
-						}
-					});
-				}
-			});
 			// 元素配置
 			$(select).find('.kb-select').after('<span class="kb-select-icon kb-icon-arrow-down"></span><span class="kb-select-icon kb-icon-min-close" style="opacity: 0;visibility: hidden"></span>');
 			if(ele.options.search){
@@ -119,32 +103,67 @@
 				event.stopPropagation();
 			});
 			$(select).on('click','', function(event) {
+				var thisele = $(this);
 				event.stopPropagation();
 				// 关闭所有已打开的窗口
 				$(form.el).find('.kb-item-select').each(function(index, el) {
 					if($(this).hasClass('kb-openselect')){
-						$(this).find('.kb-icon-arrow-down').css({
-							'opacity': 0,
-							'visibility': 'hidden'
-						});
-						$(this).find('.kb-icon-min-close').css({
-							'opacity': 1,
-							'visibility': 'visible'
-						});
-						$(this).removeClass('kb-openselect');
+						if($(this).html() != $(thisele).html()){
+							$(this).removeClass('kb-openselect');
+
+							$(this).find('.kb-icon-arrow-down').css({
+								'transform': 'rotate(0deg)'
+							});
+							if($(this).find('.kb-select').html() != ''){
+								$(this).find('.kb-icon-arrow-down').css({
+									'opacity': 0,
+									'visibility': 'hidden'
+								});
+								$(this).find('.kb-icon-min-close').css({
+									'opacity': 1,
+									'visibility': 'visible'
+								});
+							}
+						}
 					}
 				});
 
 				if($(this).hasClass('kb-disabled')){
 					return false;
 				}
-				$(this).toggleClass('kb-openselect');
+
 				var open = false;
-				if($(select).hasClass('kb-openselect')){
+				$(this).toggleClass('kb-openselect');
+				if($(this).hasClass('kb-openselect')){
 					open = true;
 				}
 
 				if(open){
+					$(document).one('click', function(event) {
+						if($(select).hasClass('kb-openselect')){
+							// 关闭所有已打开的窗口
+							$(form.el).find('.kb-item-select').each(function(index, el) {
+								if($(this).hasClass('kb-openselect')){
+									$(this).removeClass('kb-openselect');
+
+									$(this).find('.kb-icon-arrow-down').css({
+										'transform': 'rotate(0deg)'
+									});
+									if($(this).find('.kb-select').html() != ''){
+										$(this).find('.kb-icon-arrow-down').css({
+											'opacity': 0,
+											'visibility': 'hidden'
+										});
+										$(this).find('.kb-icon-min-close').css({
+											'opacity': 1,
+											'visibility': 'visible'
+										});
+									}
+								}
+							});
+						}
+					});
+
 					$(this).find('.kb-icon-min-close').css({
 						'opacity': 0,
 						'visibility': 'hidden'
@@ -233,6 +252,7 @@
 			});
 			$(select).on('click', '.kb-icon-min-close', function(event) {
 				event.stopPropagation();
+				
 				$(select).find('.kb-icon-min-close').css({
 					'opacity': 0,
 					'visibility': 'hidden'
@@ -243,6 +263,19 @@
 					'transform': 'rotate(0deg)'
 				});
 				$(select).find('.kb-select').html('');
+				$(select).find('.kb-select-scroll li').each(function(index, el) {
+					$(this).removeClass('active');
+				});
+
+				// 初始化(归零)
+				if($(select).data('default-active') != undefined){
+					if($(select).data('default-active') > 0){
+						$(select).find('.kb-select-scroll').find('li').eq(parseInt($(select).data('default-active')) - 1).click();
+					}
+				}else{
+					$(select).data('active','0');
+				}
+
 				// Clear回调
 				if(ele.options.callback.kbcb_clear != undefined && ele.options.callback.kbcb_clear != ''){
 					ele.options.callback.kbcb_clear($(this),$(select));
@@ -276,9 +309,13 @@
 			// 初始化
 			var test = '['+$(select).data('active')+']'; // 上这个验证比较容易一点?
 			if($(select).data('active') != undefined && test != '[]'){
-				$(select).find('.kb-select-scroll').find('li').eq($(select).data('active')).click();
+				if($(select).data('active') > 0){
+					$(select).find('.kb-select-scroll').find('li').eq(parseInt($(select).data('active')) - 1).click();
+				}
 			}else if($(select).data('default-active') != undefined){
-				$(select).find('.kb-select-scroll').find('li').eq($(select).data('default-active')).click();
+				if($(select).data('default-active') > 0){
+					$(select).find('.kb-select-scroll').find('li').eq(parseInt($(select).data('default-active')) - 1).click();
+				}
 			}
 		},
 		GetForm:function(element){
@@ -302,7 +339,7 @@
 			var val = '';
 			ele.options = $.data(el, 'reset_option');
 			if(ele.options.type == 'input'){
-				val = $(this.el).find(el).find('.kb-input').attr('value');
+				val = $(this.el).find(el).find('.kb-input');
 			}else if(ele.options.type == 'select'){
 				// val = $(this.el).find(el);
 				val = $(this.el).find(el).find('.kb-select-scroll li.active');
